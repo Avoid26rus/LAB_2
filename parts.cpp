@@ -1,0 +1,66 @@
+#pragma once
+#include "Header.h"
+#include "functions.h"
+#include "route.h"
+#include "parts.h"
+
+inline void first_part()
+{
+	setlocale(LC_ALL, "Russian");
+	route *temp = new route[N];
+	int n;
+	bool FLAG = true;
+
+	cout << "Введите данные о маршрутах:         " << endl;
+	for (int i = 0; i < N; i++)
+		cin >> temp[i];
+
+	bsort(temp);
+
+	cout << "Информация о всех маршрутах: " << endl;
+	for (int i = 0; i < N; i++)
+		cout << temp[i];
+
+	cout << "Введите номер маршрута для поиска: " << endl;
+	cin >> n;
+	for (int i = 0; i < N; i++)
+	{
+		if (n == temp[i].get_number())
+		{
+			cout << temp[i];
+			FLAG = false;
+		}
+	}
+	if (FLAG)
+	{
+		cout << "По данному маршруту ничего не найдено!" << endl;
+	}
+
+	delete[] temp;
+	system("pause");
+}
+
+inline void second_part() {
+	setlocale(LC_ALL, "Russian");
+	ifstream in;
+	try
+	{
+		in.open("input.txt");
+		if (!in.is_open()) {
+			throw 505;
+		}
+		char word[40];//строка
+		while (in >> word) {//считываем по предложению
+							//проверяем на гласность
+			if (strlen(word) > 0 && isAlpfa(word[0]) && isAlpfa(word[strlen(word) - 1])) {
+				cout << word << ' ';
+			}
+		}
+		in.close();//закрываем файл
+	}
+	catch (const int &ex)
+	{
+		cout << "Ошибка открытия файла!" << endl << "Код ошибки: #" << ex << endl;
+	}
+	system("pause");
+}

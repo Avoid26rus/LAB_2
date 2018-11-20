@@ -1,42 +1,22 @@
-﻿#include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include "parts.cpp"
 
-using namespace std;
-
-//проверяем, является ли гласной
-bool isAlpfa(char var){
-	switch(var){
-	case 'a':
-		return true;
-	case 'y':
-		return true;
-	case 'e':
-		return true;
-	case 'i':
-		return true;
-	case 'o':
-		return true;
-	case 'u':
-		return true;
-	default:
-		return false;
+int main() {
+	int tmp;
+	while (1) {
+		cout << "1 - First part of programm" << endl << "2 - Second part of programm" << endl;
+		cin >> tmp;
+		if (tmp == 1)
+		{
+			first_part();
+		}
+		else
+		{
+			second_part();
+		}
+		cout << "Reply cycle?" << endl << "1 - Yes" << endl << "2 - No" << endl;
+		cin >> tmp;
+		if (tmp != 1)
+			break;
 	}
-}
-
-int main(){
-	setlocale(LC_ALL, "");
-	ifstream in("input.txt");
-	string word;//строка
-	stringstream ss;
-	while(in >> word){//считываем по предложению
-		//проверяем на гласность
-		if(word.size() > 0 && isAlpfa(word[0]) && isAlpfa(word[word.size()-1])){
-			ss << word << ' ';//выводим в поток
-		} 	
-	}
-	cout << ss.str();// выводим предложения
-	in.close();//закрываем файл										   
-	system("pause>>void");
+	return -1;
 }
