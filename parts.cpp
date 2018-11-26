@@ -1,14 +1,15 @@
 #pragma once
 #include "Header.h"
-#include "functions.h"
 #include "route.h"
+#include "functions.h"
 #include "parts.h"
 
-inline void first_part()
+void first_part()
 {
 	setlocale(LC_ALL, "Russian");
 	route *temp = new route[N];
-	int n;
+	char n[10];
+	char ttt[10];
 	bool FLAG = true;
 
 	cout << "Введите данные о маршрутах:         " << endl;
@@ -23,9 +24,11 @@ inline void first_part()
 
 	cout << "Введите номер маршрута для поиска: " << endl;
 	cin >> n;
+	
 	for (int i = 0; i < N; i++)
 	{
-		if (n == temp[i].get_number())
+		strcpy(ttt, temp[i].get_number());
+		if (!strcmp(ttt, n))
 		{
 			cout << temp[i];
 			FLAG = false;
@@ -40,7 +43,7 @@ inline void first_part()
 	system("pause");
 }
 
-inline void second_part() {
+void second_part() {
 	setlocale(LC_ALL, "Russian");
 	ifstream in;
 	try
@@ -62,5 +65,4 @@ inline void second_part() {
 	{
 		cout << "Ошибка открытия файла!" << endl << "Код ошибки: #" << ex << endl;
 	}
-	system("pause");
 }

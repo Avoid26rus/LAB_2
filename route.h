@@ -4,10 +4,10 @@ class route
 private:
 	char point_A[40];
 	char point_B[40];
-	int number;
-
+	char number[10];
 public:
 	route();
+	route(char *a, char *b, char *c);
 
 	friend ostream& operator <<(ostream& out, const route op2);
 	friend istream& operator >>(istream& in, route &op2);
@@ -18,7 +18,7 @@ public:
 
 	char* get_point_A();
 	char* get_point_B();
-	int get_number();
+	char* get_number();
 
 	static bool cmp(const route& a, const route& b);
 

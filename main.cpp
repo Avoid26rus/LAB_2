@@ -1,4 +1,7 @@
-#include "parts.cpp"
+#include "Header.h"
+#include "route.h"
+#include "functions.h"
+#include "parts.h"
 
 int main() {
 	int tmp;
@@ -13,7 +16,7 @@ int main() {
 		{
 			second_part();
 		}
-		cout << "Reply cycle?" << endl << "1 - Yes" << endl << "2 - No" << endl;
+		cout << endl << "Reply cycle?" << endl << "1 - Yes" << endl << "2 - No" << endl;
 		cin >> tmp;
 		if (tmp != 1)
 			break;
